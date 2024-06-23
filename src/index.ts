@@ -22,25 +22,30 @@ const hostnameEndpointDefault = 'mempool.space';
 const networkEndpointDefault = 'main';
 
 const mempool = (
-  { hostname, network, protocol, config }: MempoolConfig = {
+  { hostname, network, protocol, config, path }: MempoolConfig = {
     hostname: hostnameEndpointDefault,
     network: networkEndpointDefault,
   }
 ): MempoolReturn => {
   if (!hostname) hostname = hostnameEndpointDefault;
   if (!network) network = networkEndpointDefault;
+  if (path === undefined) {
+    path = "/api/"
+  }
 
   const { api: apiBitcoin } = makeBitcoinAPI({
     hostname,
     network,
     protocol,
     config,
+    path,
   });
   const { api: apiLiquid } = makeLiquidAPI({
     hostname,
     network,
     protocol,
     config,
+    path,
   });
   return {
     bitcoin: {

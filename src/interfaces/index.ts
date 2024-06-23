@@ -17,6 +17,7 @@ export interface MempoolConfig {
   hostname?: string;
   network?: string;
   config?: AxiosRequestConfig;
+  path?: string;
 }
 
 export interface MempoolReturn {
