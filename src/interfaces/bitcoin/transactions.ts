@@ -26,12 +26,18 @@ export interface Vout {
   value: number;
 }
 
-export interface TxStatus {
-  confirmed: boolean;
+export interface TxUnconfirmedStatus {
+  confirmed: false;
+}
+
+export interface TxConfirmedStatus {
+  confirmed: true;
   block_height: number;
   block_hash: string;
   block_time: number;
 }
+
+export type TxStatus = TxUnconfirmedStatus | TxConfirmedStatus;
 
 export interface TxMerkleProof {
   block_height: number;
